@@ -13,4 +13,7 @@ dbmigrate:
 dbrollback:
 	migrate -path db/migration -database "postgresql://postgres:postgres@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
-.PHONY: createdb dropdb containers dbmigrate dbrollback
+sqlc:
+	sqlc generate
+
+.PHONY: createdb dropdb containers dbmigrate dbrollback sqlc
