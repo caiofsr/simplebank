@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  pgsql:
+    image: 'postgres:13'
+    container_name: pgsql
+    ports:
+      - '5432:5432'
+    environment:
+      PGPASSWORD: 'postgres'
+      POSTGRES_DB: 'simplebank'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+    volumes:
+      - 'pgsqlvolume:/var/lib/postgresql/data'
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-q', '-d', 'simplebank', '-U', 'postgres']
+      retries: 3
+      timeout: 5s
+
+volumes:
+  pgsqlvolume:
