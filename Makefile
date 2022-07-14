@@ -16,4 +16,7 @@ dbrollback:
 sqlc:
 	sqlc generate
 
-.PHONY: createdb dropdb containers dbmigrate dbrollback sqlc
+test:
+	go test -v -cover ./...
+
+.PHONY: createdb dropdb containers dbmigrate dbrollback sqlc test
