@@ -24,20 +24,3 @@ func LoadConfig(path string) (config Config, err error) {
 
 	return
 }
-
-func LoadTestConfig(path string) (config Config, err error) {
-	viper.AddConfigPath(path)
-	viper.SetConfigName(".env.testing")
-	viper.SetConfigType("env")
-
-	viper.AutomaticEnv()
-
-	err = viper.ReadInConfig()
-	if err != nil {
-		return
-	}
-
-	err = viper.Unmarshal(&config)
-
-	return
-}
