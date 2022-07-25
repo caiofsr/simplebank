@@ -25,8 +25,12 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-    steps:
+    env:
+      DB_DRIVER: postgres
+      DB_SOURCE: postgresql://postgres:postgres@localhost:5432/simple_bank?sslmode=disable
+      SERVER_ADDRESS: 0.0.0.0:3333
 
+    steps:
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
