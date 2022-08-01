@@ -26,7 +26,7 @@ func (server *Server) createAccount(ctx *gin.Context) {
 	var req createAccountRequest
 
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		ctx.JSON(http.StatusCreated, errorResponse(err))
 		return
 	}
 
@@ -64,7 +64,7 @@ func (server *Server) getAccount(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, account)
+	ctx.JSON(http.StatusOK, account)
 }
 
 func (server *Server) listAccounts(ctx *gin.Context) {
