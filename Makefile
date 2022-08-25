@@ -2,10 +2,10 @@ containers:
 	docker-compose up -d
 
 createdb:
-	docker exec -it pgsql createdb --username=postgres --owner=postgres simple_bank
+	docker exec -it simplebank-pg createdb --username=postgres --owner=postgres simple_bank
 
 dropdb:
-	docker exec -it pgsql  dropdb  --username=postgres simple_bank
+	docker exec -it simplebank-pg  dropdb  --username=postgres simple_bank
 
 dbmigrate:
 	migrate -path db/migration -database "postgresql://postgres:postgres@localhost:5432/simple_bank?sslmode=disable" -verbose up
