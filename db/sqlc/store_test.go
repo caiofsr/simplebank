@@ -31,7 +31,7 @@ func TestTransferTxDeadlock(t *testing.T) {
 			ctx := context.Background()
 			_, err := store.TransferTx(ctx, TransferTxParams{
 				FromAccountID: fromAccountID,
-				ToAccountId:   toAccountID,
+				ToAccountID:   toAccountID,
 				Amount:        amount,
 			})
 
@@ -72,7 +72,7 @@ func TestTransferTx(t *testing.T) {
 			ctx := context.Background()
 			result, err := store.TransferTx(ctx, TransferTxParams{
 				FromAccountID: account1.ID,
-				ToAccountId:   account2.ID,
+				ToAccountID:   account2.ID,
 				Amount:        amount,
 			})
 

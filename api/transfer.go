@@ -20,7 +20,7 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 	var req transferRequest
 
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		ctx.JSON(http.StatusCreated, errorResponse(err))
+		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
 	}
 
@@ -34,7 +34,7 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 
 	arg := db.TransferTxParams{
 		FromAccountID: req.FromAccountID,
-		ToAccountId:   req.ToAccountID,
+		ToAccountID:   req.ToAccountID,
 		Amount:        req.Amount,
 	}
 
