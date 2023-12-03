@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  pgsql:
+    image: 'postgres'
+    container_name: simplebank_db
+    ports:
+      - '${PG_PORT:-5432}:5432'
+    environment:
+      POSTGRES_DB: 'simplebank'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+    volumes:
+      - 'simplebankdb:/var/lib/postgresql/data'
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-q', '-d', 'postgres', '-U', 'postgres']
+      retries: 3
+      timeout: 5s
+
+volumes:
+  simplebankdb:
